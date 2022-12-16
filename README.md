@@ -16,9 +16,9 @@ Diese Bibliothek wurde mit Java 17 getestet.
 ```xml
 <dependencies>
     <dependency>
-        <groupId>de.schipplock.gui.swing.svgicon</groupId>
+        <groupId>de.schipplock.gui.swing</groupId>
         <artifactId>svgicon</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.3</version>
     </dependency>
 </dependencies>
 ```
