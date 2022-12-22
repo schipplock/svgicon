@@ -16,6 +16,7 @@
 package de.schipplock.gui.swing.svgicon;
 
 import java.awt.*;
+import java.net.URL;
 import java.util.List;
 import static java.lang.String.format;
 
@@ -23,16 +24,31 @@ public class SvgIconManager {
 
     private SvgIconManager() {}
 
-    public static SvgIcon getIcon(String iconName, Dimension dimension, String htmlColor) {
-        return new SvgIcon(format("icons/%s.svg", iconName), dimension.width, dimension.height, htmlColor);
+    public static SvgIcon getBuiltinIcon(String iconName, Dimension dimension, String htmlColor) {
+        URL iconUrl = SvgIconManager.class.getClassLoader().getResource(format("icons/%s.svg", iconName));
+        return new SvgIcon(iconUrl, dimension.width, dimension.height, htmlColor);
     }
 
-    public static List<Image> getWindowIcons(String iconName, String htmlColor) {
+    public static SvgIcon getIcon(String iconName, Dimension dimension) {
+        URL iconUrl = SvgIconManager.class.getClassLoader().getResource(iconName);
+        return new SvgIcon(iconUrl, dimension.width, dimension.height);
+    }
+
+    public static List<Image> getBuiltinWindowIconImages(String iconName, String htmlColor) {
         return List.of(
-            SvgIconManager.getIcon(iconName, new Dimension(16, 16), htmlColor).getImage(),
-            SvgIconManager.getIcon(iconName, new Dimension(32, 32), htmlColor).getImage(),
-            SvgIconManager.getIcon(iconName, new Dimension(48, 48), htmlColor).getImage(),
-            SvgIconManager.getIcon(iconName, new Dimension(256, 256), htmlColor).getImage()
+            SvgIconManager.getBuiltinIcon(iconName, new Dimension(16, 16), htmlColor).getImage(),
+            SvgIconManager.getBuiltinIcon(iconName, new Dimension(32, 32), htmlColor).getImage(),
+            SvgIconManager.getBuiltinIcon(iconName, new Dimension(48, 48), htmlColor).getImage(),
+            SvgIconManager.getBuiltinIcon(iconName, new Dimension(256, 256), htmlColor).getImage()
+        );
+    }
+
+    public static List<Image> getWindowIconImages(String iconName) {
+        return List.of(
+                SvgIconManager.getIcon(iconName, new Dimension(16, 16)).getImage(),
+                SvgIconManager.getIcon(iconName, new Dimension(32, 32)).getImage(),
+                SvgIconManager.getIcon(iconName, new Dimension(48, 48)).getImage(),
+                SvgIconManager.getIcon(iconName, new Dimension(256, 256)).getImage()
         );
     }
 }

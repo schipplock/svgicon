@@ -17,7 +17,7 @@ limitations under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.schipplock.gui.swing</groupId>
     <artifactId>svgicon</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <name>SvgIcon</name>
     <description>SvgIcon for use in Swing applications</description>
     <url>https://github.com/schipplock/svgicon</url>

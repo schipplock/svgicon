@@ -38,7 +38,7 @@ public class SvgIconDemo extends JFrame {
     }
 
     private void setupFrame() {
-        setIconImages(SvgIconManager.getWindowIcons(SvgIcons.SVGICON_DATABASE, "#d15000"));
+        setIconImages(SvgIconManager.getBuiltinWindowIconImages(SvgIcons.SVGICON_DATABASE, "#d15000"));
         setPreferredSize(new Dimension(330, 420));
         setMinimumSize(new Dimension(330, 420));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -61,7 +61,7 @@ public class SvgIconDemo extends JFrame {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(SvgIconManager.getIcon(SvgIcons.SVGICON_DATABASE, new Dimension(300, 300), "#419ee0").getImage(), 0, 0, this);
+                g.drawImage(SvgIconManager.getBuiltinIcon(SvgIcons.SVGICON_DATABASE, new Dimension(300, 300), "#419ee0").getImage(), 0, 0, this);
             }
         };
 
@@ -75,9 +75,9 @@ public class SvgIconDemo extends JFrame {
             cancelButton.setEnabled(true);
         });
 
-        okButton.setIcon(new SvgIcon("icons/check2-circle.svg", 16, 16, "#2a7d2a"));
-        cancelButton.setIcon(new SvgIcon("icons/door-open.svg", 16, 16, "#d10000"));
-        disabledButton.setIcon(new SvgIcon("icons/door-open.svg", 16, 16, "#d10000"));
+        okButton.setIcon(SvgIconManager.getBuiltinIcon(SvgIcons.SVGICON_CHECK2_CIRCLE, new Dimension(16, 16), "#2a7d2a"));
+        cancelButton.setIcon(SvgIconManager.getBuiltinIcon(SvgIcons.SVGICON_DOOR_OPEN, new Dimension(16, 16), "#d10000"));
+        disabledButton.setIcon(SvgIconManager.getBuiltinIcon(SvgIcons.SVGICON_DOOR_OPEN, new Dimension(16, 16), "#d10000"));
 
         actionPanel.add(okButton, "right, pushx");
         actionPanel.add(cancelButton, "right, pushx");

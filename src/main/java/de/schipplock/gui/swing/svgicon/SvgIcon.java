@@ -21,6 +21,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Objects;
 
 import de.schipplock.gui.swing.svgicon.exceptions.TranscodingException;
@@ -35,7 +36,7 @@ public class SvgIcon implements Icon {
 
     private final BufferedImage disabledImage;
 
-    public SvgIcon(String path, int width, int height, String fillColor) {
+    public SvgIcon(URL url, int width, int height, String fillColor) {
         var transcoder = new ImageTranscoder() {
             private BufferedImage img;
 
@@ -61,7 +62,7 @@ public class SvgIcon implements Icon {
 
         transcoder.setDimension(new Dimension(width, height));
 
-        try (InputStream is = Objects.requireNonNull(SvgIcon.class.getClassLoader().getResource(path)).openStream())  {
+        try (InputStream is = Objects.requireNonNull(url).openStream())  {
             String svgXmlContent = new String(is.readAllBytes());
             // like a pro :P
             svgXmlContent = svgXmlContent.replace("fill=\"currentColor\"", "fill=\"" + fillColor +"\"");
@@ -74,8 +75,8 @@ public class SvgIcon implements Icon {
         }
     }
 
-    public SvgIcon(String path, int width, int height) {
-        this(path,width, height, "#000000");
+    public SvgIcon(URL url, int width, int height) {
+        this(url, width, height, "#000000");
     }
 
     @Override

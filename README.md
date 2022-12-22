@@ -14,13 +14,11 @@ Diese Bibliothek wurde mit Java 17 getestet.
 **Das muss in die pom.xml:**
 
 ```xml
-<dependencies>
-    <dependency>
-        <groupId>de.schipplock.gui.swing</groupId>
-        <artifactId>svgicon</artifactId>
-        <version>0.0.3</version>
-    </dependency>
-</dependencies>
+<dependency>
+    <groupId>de.schipplock.gui.swing</groupId>
+    <artifactId>svgicon</artifactId>
+    <version>0.0.4</version>
+</dependency>
 ```
 
 ## Wie verwende ich diese Bibliothek?
@@ -36,10 +34,14 @@ import de.schipplock.gui.swing.svgicon.SvgIcons;
 
 ```java
 // wenn man ein Icon braucht
-var icon = SvgIconManager.getIcon(SvgIcons.SVGICON_DATABASE, new Dimension(16, 16), "#419ee0");
+var icon = SvgIconManager.getBuiltinIcon(SvgIcons.SVGICON_DATABASE, new Dimension(16, 16), "#419ee0");
 
 // wenn man ein Image braucht
-var image = SvgIconManager.getIcon(SvgIcons.SVGICON_DATABASE, new Dimension(16, 16), "#419ee0").getImage();
+var image = SvgIconManager.getBuiltinIcon(SvgIcons.SVGICON_DATABASE, new Dimension(16, 16), "#419ee0").getImage();
+
+// wenn man kein mitgeliefertes Icon nutzen möchte
+var icon = SvgIconManager.getIcon("images/icon.svg");
+var image = SvgIconManager.getIcon("images/icon.svg").getImage();
 ```
 
 **Fenster-Icons laden:**
@@ -47,10 +49,11 @@ var image = SvgIconManager.getIcon(SvgIcons.SVGICON_DATABASE, new Dimension(16, 
 Angenommen wird, dass die Klasse `JFrame` erweitert.
 
 ```java
-setIconImages(SvgIconManager.getWindowIcons(SvgIcons.SVGICON_DATABASE, "#d15000"));
+setIconImages(SvgIconManager.getBuiltinWindowIconImages(SvgIcons.SVGICON_DATABASE, "#d15000"));
+setIconImages(SvgIconManager.getWindowIconImages("images/logo.svg"));
 ```
 
-Die Methode `getWindowIcons` stellt das gewünschte SVG-Icon in typischen Größen zur Verfügung
+Die Methode `getWindowIconImages` oder `getBuiltinWindowIconImages` stellt das gewünschte SVG-Icon in typischen Größen zur Verfügung
 (16x16, 32x32, 48x48, 256x256).
 
 ## License
