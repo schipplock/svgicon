@@ -3,7 +3,6 @@
 SvgIcon ist eine Java Bibliothek, mit dessen Hilfe man u.a. im Swing-Kontext SVG-Icons nutzen kann.
 Ich nahm ja eigentlich an, dass Swing das ootb kann, aber das war leider nicht der Fall.
 Ist ja auch schon etwas älter :). Und deswegen gibt es diese kleine Bibliothek.
-Diese Bibliothek wurde mit Java 17 getestet.
 
 ## Screenshots
 
@@ -17,7 +16,7 @@ Diese Bibliothek wurde mit Java 17 getestet.
 <dependency>
     <groupId>de.schipplock.gui.swing</groupId>
     <artifactId>svgicon</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
 </dependency>
 ```
 
